@@ -126,7 +126,7 @@ li:hover {
 	margin-bottom: 1em;
 }
 
-.filters{
+.filters_container{
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	gap: 1rem;
@@ -134,7 +134,7 @@ li:hover {
 	padding: 0 1rem;
 }
 
-.filter{
+.filter, .all_filter{
 	padding: 0.8rem 1.5rem;
 	border-radius: 999rem;
 	border: 1px solid #1D6154;
@@ -211,7 +211,7 @@ footer nav ul {
 }
 
 @media screen and (min-width:850px) {
-	.filters{
+	.filters_container{
 		display: flex;
 		justify-content: center;
 		gap: 2rem;

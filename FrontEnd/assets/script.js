@@ -10,12 +10,12 @@ async function loadFilters(){
     const div = document.createElement('div');
     
     
-    div.classList.add('filters');
+    div.classList.add('filters_container');
     portfolio.insertBefore(div, gallery)
 
     const allButton = document.createElement('button');
     allButton.innerText = 'Tous';
-    allButton.classList.add('filter');
+    allButton.classList.add('all_filter');
     allButton.classList.add('selected');
     div.appendChild(allButton);
     
@@ -30,25 +30,35 @@ async function loadFilters(){
 
     const filters = document.querySelectorAll('.filter')
 
+    allButton.addEventListener('click', () => {
+        filters.forEach(f => {
+            f.classList.remove('selected');   
+        })
+        allButton.classList.add('selected');
+        showProjects();
+    })
+
     filters.forEach(filter => {        
         filter.addEventListener('click', () => {
             filters.forEach(f => {
-                f.classList.remove('selected');
+                f.classList.remove('selected');   
             })
-
+            allButton.classList.remove('selected');
             gallery.innerHTML = "";
             filter.classList.add('selected');
-            showProjects();
+
+            const categoryId = parseInt(filter.dataset.id); // Ne marche pas sans parseInt, CONVERTIT LA CHAINE EN NOMBRE
+            const filteredWorks = allWorks.filter(work => work.categoryId === categoryId); //pour chaque work, on verifie si il a la bonne categorie, si oui on le met dans le nouveau tableau
+
+            showProjects(filteredWorks);
         })
     })
-
 
     // faire apparaitre un bouton par categorie                                                     OK
     // ajouter un bouton pour "tous"                                                                OK
     // changer la couleur du bouton du filtre selectionné                                           OK
     // faire un add event sur les boutons au clique, avec showProjects                              OK
-    // faire en sorte que showProjects prenne en compte le parametre de l'id du bouton
-    
+    // faire en sorte que showProjects prenne en compte le parametre de l'id du bouton              OK
 }
 
 async function loadProjects() {      // charge les projets au demarrage
@@ -60,8 +70,8 @@ async function loadProjects() {      // charge les projets au demarrage
     showProjects();
 }
 
-function showProjects(){
-    for (let work of allWorks) {
+function showProjects(works = allWorks){
+    for (let work of works) {
         const gallery = document.querySelector('.gallery');
         const figure = document.createElement('figure');
         const img = document.createElement('img');
@@ -76,20 +86,6 @@ function showProjects(){
     }
 }
 
-loadFilters().then(() => {  // on attend que ca charge sinon ca a pas le temps de charger
+loadFilters().then(() => {  // on attend que loadFilters a fini de charger sinon loadProject charge casi en meme temps et ca bug
   loadProjects();
 });
-
-
-
-
-
-
-
-
-
-// je fais une fonction pour aller chercher les projets (avec en parametres les filtres ou aucun parametre pour tous)
-// au chargement la page charge tous les projets
-// rajout d'un bouton "tous" pour faire une recherche sans categorie et tout faire apparaitre au clique
-// quand on clique sur un bouton, ca vide la gallerie, et lance la fonction avec le filtre en parametre 
-// le bouton selectionné change de couleur
