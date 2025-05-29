@@ -35,6 +35,7 @@ async function loadFilters(){
             f.classList.remove('selected');   
         })
         allButton.classList.add('selected');
+        gallery.innerHTML = "";
         showProjects();
     })
 
