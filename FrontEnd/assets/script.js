@@ -16,6 +16,7 @@ async function loadFilters(){
     const allButton = document.createElement('button');
     allButton.innerText = 'Tous';
     allButton.classList.add('filter');
+    allButton.classList.add('selected');
     div.appendChild(allButton);
     
     categories.forEach(categorie => {
@@ -26,10 +27,27 @@ async function loadFilters(){
         button.innerText = categorie.name;
         div.appendChild(button);
     });
-    // faire apparaitre un bouton par categorie                                     OK
-    // ajouter un bouton pour "tous"                                                OK
-    // changer la couleur du bouton du filtre selectionné
-    // faire un add event sur les boutons au clique, avec showProjects(filtres en parametre ou rien pour tous)
+
+    const filters = document.querySelectorAll('.filter')
+
+    filters.forEach(filter => {        
+        filter.addEventListener('click', () => {
+            filters.forEach(f => {
+                f.classList.remove('selected');
+            })
+
+            gallery.innerHTML = "";
+            filter.classList.add('selected');
+            showProjects();
+        })
+    })
+
+
+    // faire apparaitre un bouton par categorie                                                     OK
+    // ajouter un bouton pour "tous"                                                                OK
+    // changer la couleur du bouton du filtre selectionné                                           OK
+    // faire un add event sur les boutons au clique, avec showProjects                              OK
+    // faire en sorte que showProjects prenne en compte le parametre de l'id du bouton
     
 }
 
@@ -39,15 +57,27 @@ async function loadProjects() {      // charge les projets au demarrage
     const works = await response.json();
     
     allWorks = works; // 'sauvegarde' dans la variable pour etre en portee globale
-    // showProjects();
+    showProjects();
 }
 
-// function showProjects(){
+function showProjects(){
+    for (let work of allWorks) {
+        const gallery = document.querySelector('.gallery');
+        const figure = document.createElement('figure');
+        const img = document.createElement('img');
+        const figCaption = document.createElement('figcaption')
 
-// }
-loadFilters();
-loadProjects().then(() => {  // on attend que ca charge sinon ca a pas le temps de charger
-  console.log(allWorks);
+        img.src = work.imageUrl;
+        img.alt = work.title;
+        figCaption.innerText = work.title;
+        figure.appendChild(img);
+        figure.appendChild(figCaption);
+        gallery.appendChild(figure);
+    }
+}
+
+loadFilters().then(() => {  // on attend que ca charge sinon ca a pas le temps de charger
+  loadProjects();
 });
 
 
