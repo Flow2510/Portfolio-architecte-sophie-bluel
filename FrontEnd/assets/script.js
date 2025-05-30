@@ -90,3 +90,29 @@ function showProjects(works = allWorks){
 loadFilters().then(() => {  // on attend que loadFilters a fini de charger sinon loadProject charge casi en meme temps et ca bug
   loadProjects();
 });
+
+document.querySelector('.section__form').addEventListener('submit', async (s) => {
+    s.preventDefault(); // on emp
+
+    const email = document.querySelector('#section__input-email').value;
+    const password = document.querySelector('#section__input-password').value;
+
+    const response = await fetch('http://localhost:5678/api/users/login', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {                  // si la reponse est bonne sa return true / code '200' (veut dire succes), donc = .ok
+        localStorage.setItem("token", data.token);  //enregistrement en local du token
+        document.querySelector('.header__nav-login').innerText = "logout"; // changement en logout, faire une fonction log out et faire en sorte qu'il reste sur toutes les pages
+        document.querySelector('.section__form').reset(); 
+        window.location.href = 'index.html';
+    } else {
+        alert(data.message);
+    }
+})
+
+const token = localStorage.getItem("token"); // si il y a un token dedans l'utilisateur est connecté sinon non
