@@ -258,27 +258,28 @@ footer nav ul {
 	align-items: center;
 	height: 100vh;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.3);
 	z-index: 999;
 }
 
-.modal__section{
+.modal__section, .add__section{
 	background-color: white;
 	text-align: center;
+	border-radius: 1rem;
 }
 
 .modal__icon{
 	display: flex;
 	justify-content: end;
-	padding: 1rem 1rem 0 0;
+	padding: 1rem;
 	cursor: pointer;
 }
 
-.modal__gallery-wrapper{
+.modal__gallery-wrapper, .add__gallery-wrapper{
 	padding: 0 5rem 1.5rem 5rem;
 }
 
-.modal__title{
+.modal__title, .add__title{
 	font-size: 2rem;
 	padding: 1rem 0;
 }
@@ -287,9 +288,11 @@ footer nav ul {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
 	grid-auto-rows: auto;
+	gap: 1rem;
+	margin: 2rem auto;
 }
 
-.modal__border{
+.modal__border, .add__border{
 	width: 100%;
 	height: 2px;
 	background-color: rgba(0, 0, 0, 0.15);
@@ -325,10 +328,65 @@ footer nav ul {
 	background-color: black;
 	padding: 0.3rem;
 	margin: 0.3rem;
-	scale: 0.8;
+	cursor: pointer;
+}
+
+.add__icon{
+	display: flex;
+	justify-content: space-between;
+	padding: 1rem;
+}
+
+.modal__icon-return{
+	scale: 1.5;
+}
+
+.add__gallery-wrapper{
+	min-width: 570px;
+}
+
+.add__form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.add__label-image{
+	background-color: hsla(202, 46%, 94%, 1);
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1rem 0;
+}
+
+.add__label-image i{
+	color: hsla(202, 16%, 76%, 1);
+	font-size: 4rem;
+}
+
+.add__input-button{
+	width: fit-content;
+}
+
+.add__input-title, .add__select{
+	padding: 0.5rem 0;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+.add__label-title{
+	text-align: left;
+	margin: 1rem 0 0.5rem 0;
+}
+
+.add__form-button{
+	width: fit-content;
+	margin: auto;
 }
 
 /* css pour la page login */
+
 .section{
 	text-align: center;
 }

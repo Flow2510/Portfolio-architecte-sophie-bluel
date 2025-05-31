@@ -99,7 +99,13 @@ async function showModalImg () {
         div.innerHTML = `<i class="gallery__icon fa-solid fa-trash-can"></i>`;
         div.style.background = `url("${work.imageUrl}")`;  // bien mettre ${} sinon affiche que la premiere image avec work.imageUrl
         div.style.backgroundSize = "cover";
+        div.style.backgroundPosition = 'center';
         modalGallery.appendChild(div);
+        
+        galleryIcons = document.querySelectorAll('.gallery__icon');
+        galleryIcons.addEventListener('click', () => {
+            alert('ok');
+        })
     }
 }
 
@@ -145,7 +151,7 @@ document.querySelector('.portfolio__modify-wrapper').addEventListener('click', (
     showModalImg();
 })
 
-document.querySelector('.modal__icon').addEventListener('click', () => {
+document.querySelector('.modal__icon-close').addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "none";
     document.querySelector('.modal__gallery').innerHTML= "";
 })
