@@ -1,14 +1,13 @@
 let allWorks = [];     // creation d'une "sauvegarde" pour utiliser le tableau globalement
 
+
 async function loadFilters(){
     const url = "http://localhost:5678/api/categories";
     const response = await fetch(url);
     const categories = await response.json();
-
-    const portfolio = document.querySelector('#portfolio');
     const gallery = document.querySelector('.gallery');
+    const portfolio = document.querySelector('#portfolio');
     const div = document.createElement('div');
-    
     
     div.classList.add('filters_container');
     portfolio.insertBefore(div, gallery)
@@ -54,6 +53,7 @@ async function loadFilters(){
             showProjects(filteredWorks);
         })
     })
+    
 
     // faire apparaitre un bouton par categorie                                                     OK
     // ajouter un bouton pour "tous"                                                                OK
@@ -87,12 +87,44 @@ function showProjects(works = allWorks){
     }
 }
 
-loadFilters().then(() => {  // on attend que loadFilters a fini de charger sinon loadProject charge casi en meme temps et ca bug
-  loadProjects();
-});
+const token = localStorage.getItem("token");
 
-document.querySelector('.section__form').addEventListener('submit', async (s) => {
-    s.preventDefault(); // on emp
+if (token) {
+    const loginTextIndex = document.querySelector('.header__li-login');
+    const loginText = document.querySelector('.header__nav-login');
+
+    if (loginTextIndex) {
+        loginTextIndex.innerText = 'logout';
+        loginTextIndex.addEventListener('click', (c) => {
+            c.preventDefault();
+            localStorage.removeItem('token');
+            location.reload();
+        });
+    }
+
+    if (loginText) {
+        loginText.innerText = 'logout';
+
+        loginText.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            location.reload();
+        });
+    }
+}
+
+const gallery = document.querySelector('.gallery');
+
+if (gallery){
+    loadFilters().then(() => {  // on attend que loadFilters a fini de charger sinon loadProject charge casi en meme temps et ca bug
+    loadProjects();
+    });
+}
+
+const form = document.querySelector('.section__form');
+
+if (form) {
+    form.addEventListener('submit', async (s) => {  //sans async on peut pas utiliser await pour arttendre les reponses
+    s.preventDefault(); // on empeche l'envoi du formulaire
 
     const email = document.querySelector('#section__input-email').value;
     const password = document.querySelector('#section__input-password').value;
@@ -107,12 +139,10 @@ document.querySelector('.section__form').addEventListener('submit', async (s) =>
 
     if (response.ok) {                  // si la reponse est bonne sa return true / code '200' (veut dire succes), donc = .ok
         localStorage.setItem("token", data.token);  //enregistrement en local du token
-        document.querySelector('.header__nav-login').innerText = "logout"; // changement en logout, faire une fonction log out et faire en sorte qu'il reste sur toutes les pages
         document.querySelector('.section__form').reset(); 
-        window.location.href = 'index.html';
+        window.location.href = 'index.html';  // ne marche pas bien, car arrete le JS du coup, a voir comment je fait
     } else {
         alert(data.message);
     }
-})
-
-const token = localStorage.getItem("token"); // si il y a un token dedans l'utilisateur est connecté sinon non
+});
+}

@@ -145,9 +145,10 @@ li:hover {
 	border-radius: 999rem;
 	border: 1px solid #1D6154;
 	background-color: transparent;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	font-family: 'Syne';
 	color: #1D6154;
+	text-wrap: ellipsis;
 }
 
 .selected{
