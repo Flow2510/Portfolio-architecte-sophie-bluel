@@ -148,7 +148,9 @@ li:hover {
 	font-size: 1rem;
 	font-family: 'Syne';
 	color: #1D6154;
-	text-wrap: ellipsis;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .selected{
@@ -230,7 +232,7 @@ footer nav ul {
 	flex-direction: column;
 	max-width: 380px;
 	margin: 3rem auto 2rem auto;
-
+	position: relative;
 }
 
 .section__label{
@@ -245,6 +247,13 @@ footer nav ul {
 	border: none;
 	box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0, 0.2);
 	width: 100%;
+}
+
+.section__error{
+	display: none;
+	color: red;
+	position: absolute;
+	top: -1.5rem;
 }
 
 .section__button{

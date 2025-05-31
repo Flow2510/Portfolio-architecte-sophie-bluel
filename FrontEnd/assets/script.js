@@ -141,8 +141,11 @@ if (form) {
         localStorage.setItem("token", data.token);  //enregistrement en local du token
         document.querySelector('.section__form').reset(); 
         window.location.href = 'index.html';  // ne marche pas bien, car arrete le JS du coup, a voir comment je fait
-    } else {
-        alert(data.message);
+    } 
+    
+    if (!response.ok){
+        form.reset();
+        document.querySelector('.section__error').style.display = "block";
     }
 });
 }
