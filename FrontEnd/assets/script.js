@@ -62,7 +62,7 @@ async function loadFilters(){
     // faire en sorte que showProjects prenne en compte le parametre de l'id du bouton              OK
 }
 
-async function loadProjects() {      // charge les projets au demarrage
+async function loadProjects() {      // fonction pour charger les projets au demarrage
     const url = "http://localhost:5678/api/works"
     const response = await fetch(url);
     const works = await response.json();
@@ -84,6 +84,22 @@ function showProjects(works = allWorks){
         figure.appendChild(img);
         figure.appendChild(figCaption);
         gallery.appendChild(figure);
+    }
+}
+
+async function showModalImg () {
+    const url = "http://localhost:5678/api/works"
+    const response = await fetch(url);
+    const works = await response.json();
+
+    for (let work of works) {
+        const modalGallery = document.querySelector('.modal__gallery');
+        const div = document.createElement('div');
+        div.classList.add('gallery__wrapper');
+        div.innerHTML = `<i class="gallery__icon fa-solid fa-trash-can"></i>`;
+        div.style.background = `url("${work.imageUrl}")`;  // bien mettre ${} sinon affiche que la premiere image avec work.imageUrl
+        div.style.backgroundSize = "cover";
+        modalGallery.appendChild(div);
     }
 }
 
@@ -116,9 +132,25 @@ const gallery = document.querySelector('.gallery');
 
 if (gallery){
     loadFilters().then(() => {  // on attend que loadFilters a fini de charger sinon loadProject charge casi en meme temps et ca bug
-    loadProjects();
+        loadProjects().then(() => {
+            if (token){
+                document.querySelector('.portfolio__modify-wrapper').style.display = "flex";
+            }
+        });
     });
 }
+
+document.querySelector('.portfolio__modify-wrapper').addEventListener('click', () => {
+    document.querySelector('.modal__wrapper').style.display = "flex";
+    showModalImg();
+})
+
+document.querySelector('.modal__icon').addEventListener('click', () => {
+    document.querySelector('.modal__wrapper').style.display = "none";
+    document.querySelector('.modal__gallery').innerHTML= "";
+})
+
+
 
 const form = document.querySelector('.section__form');
 
@@ -140,7 +172,7 @@ if (form) {
     if (response.ok) {                  // si la reponse est bonne sa return true / code '200' (veut dire succes), donc = .ok
         localStorage.setItem("token", data.token);  //enregistrement en local du token
         document.querySelector('.section__form').reset(); 
-        window.location.href = 'index.html';  // ne marche pas bien, car arrete le JS du coup, a voir comment je fait
+        window.location.href = 'index.html';
     } 
     
     if (!response.ok){
