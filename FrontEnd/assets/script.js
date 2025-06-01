@@ -102,10 +102,10 @@ async function showModalImg () {
         div.style.backgroundPosition = 'center';
         modalGallery.appendChild(div);
         
-        galleryIcons = document.querySelectorAll('.gallery__icon');
-        galleryIcons.addEventListener('click', () => {
-            alert('ok');
-        })
+        // galleryIcon = document.querySelector('.gallery__icon');
+        // galleryIcon.addEventListener('click', () => {
+        //         est ce que je peux supprimer sans supprimer definitivement ? a voir avec mentor
+        // })
     }
 }
 
@@ -153,10 +153,25 @@ document.querySelector('.portfolio__modify-wrapper').addEventListener('click', (
 
 document.querySelector('.modal__icon-close').addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "none";
-    document.querySelector('.modal__gallery').innerHTML= "";
+    document.querySelector('.modal__gallery').innerHTML = "";
 })
 
+document.querySelector('.modal__button').addEventListener('click', () => {
+    document.querySelector('.add__section').style.display = 'block';
+    document.querySelector('.modal__section').style.display = 'none';
+})
 
+document.querySelector('.modal__icon-return').addEventListener('click', () => {
+    document.querySelector('.add__section').style.display = "none";
+    document.querySelector('.modal__section').style.display = "flex";
+    document.querySelector('.modal__gallery').innerHTML = "";
+    showModalImg();
+})
+
+document.querySelector('.add__icon-close').addEventListener('click', () => {
+    document.querySelector('.modal__wrapper').style.display = "none";
+    document.querySelector('.modal__gallery').innerHTML = "";
+})
 
 const form = document.querySelector('.section__form');
 

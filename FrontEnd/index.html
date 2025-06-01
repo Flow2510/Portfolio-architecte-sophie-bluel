@@ -12,6 +12,50 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+<div class="header__modify-wrapper">
+	<i class="header__modify-icon fa-solid fa-pen-to-square"></i>
+	<p class="header__modify-text">modifier</p>
+</div>
+<div class="modal__wrapper" role="dialog" aria-modal="true">
+	<section class="modal__section">
+		<div class="modal__icon">
+			<i class="modal__icon-close fa-solid fa-x"></i>
+		</div>
+		<div class="modal__gallery-wrapper">
+			<h3 class="modal__title">Galerie photo</h3>
+			<div class="modal__gallery">
+				<!-- images via JS -->
+			</div>
+			<div class="modal__border"></div>
+			<button class="modal__button">Ajouter une photo</button>
+		</div>
+	</section>
+	<section class="add__section">
+		<div class="add__icon">
+			<i class="modal__icon-return fa-solid fa-arrow-left"></i>
+			<i class="add__icon-close fa-solid fa-x"></i>
+		</div>
+		<div class="add__gallery-wrapper">
+			<h3 class="add__title">Ajout photo</h3>
+			<form action="" class="add__form">
+				<label for="add__label-image" class="add__label-image">
+					<i class="fa-regular fa-image"></i>
+					<button class="add__input-button">+ Ajouter photo</button>
+					<p>jpg, png: 4mo max</p>
+					<input type="image" src="" alt="" class="add__input-image">
+				</label>
+				<label class="add__label-title" for="add__input-title">Titre</label>
+				<input class="add__input-title" type="text" name="add__input-title" id="add__input-title">
+				<label class="add__label-title" for="">Catégorie</label>
+				<select class="add__select" name="add__select" id="add__select">
+					<option class="add__select-option" value=""></option> <!-- mettres les options avec JS -->
+				</select>
+				<div class="add__border"></div>
+				<button class="add__form-button" type="submit">Valider</button>
+			</form>
+		</div>
+	</section>
+</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
