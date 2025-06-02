@@ -121,3 +121,17 @@ export async function showOptions() {
         select.appendChild(option);
     }
 }
+
+export function resetAddForm() {
+    document.querySelector('.add__label-image i').style.display = "block";
+    document.querySelector('.add__label-image button').style.display = "block";
+    document.querySelector('.add__label-image p').style.display = "block";
+    document.querySelector('.add__preview').style.display = "none";
+    document.querySelector('.add__label-image').style.padding = "";
+    document.querySelector('.add__form').reset();
+}
+
+export function resetModal() {
+    document.querySelector('.modal__section').style.display = "block";
+    document.querySelector('.add__section').style.display = "none";
+}
