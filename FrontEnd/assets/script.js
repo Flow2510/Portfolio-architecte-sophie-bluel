@@ -69,9 +69,9 @@ if (modalButton){
 const addReturn = document.querySelector('.add__icon-return');
 
 if (addReturn) {
-    addReturn.addEventListener('click', () => {
+    addReturn.addEventListener('click', () => {                                                 //  faire une fonctions pour eviter les repetitions
     document.querySelector('.add__section').style.display = "none";
-    document.querySelector('.modal__section').style.display = "block";
+    document.querySelector('.modal__section').style.display = "block";     
     document.querySelector('.modal__gallery').innerHTML = "";
     funcs.showModalImg();
     document.querySelector('.add__label-image i').style.display = "block";
@@ -85,7 +85,7 @@ if (addReturn) {
 
 const addClose = document.querySelector('.add__icon-close');
 
-if(addClose) {
+if(addClose) {                                                                                 // utiliser la fonction fu dessus
     addClose.addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "none";
     document.querySelector('.modal__gallery').innerHTML = "";
@@ -140,12 +140,12 @@ if(addImageButton){
 
 if(imageInput) {
     imageInput.addEventListener('change', () => {
-        const reader = new FileReader();
-        const file = imageInput.files[0];
+        const reader = new FileReader();  // filreader est une api native pour lire un fichier upload en local
+        const file = imageInput.files[0];  // pour selectionner l'image (0 car l'index commence a 0)
         const preview = document.querySelector('.add__preview');
         
-        reader.onload = (e) => {                // 4. Quand la lecture est terminée
-        preview.style.backgroundImage = `url(${e.target.result})`;     // 5. On place la Data URL dans l'image
+        reader.onload = (e) => {                                                // 4. Quand la lecture est terminée
+        preview.style.backgroundImage = `url(${e.target.result})`;              // 5. On place la Data URL dans l'image
         preview.style.display = 'block';
         preview.style.backgroundSize = 'cover';
         preview.style.backgroundPosition = 'center';
@@ -156,10 +156,9 @@ if(imageInput) {
         document.querySelector('.add__label-image').style.padding = "0";
     };
 
-        reader.readAsDataURL(file);
+        reader.readAsDataURL(file);                         //on lie l'image dans le reader
     });
 }
-
 
 const addFormButton = document.querySelector('.add__form-button');
 

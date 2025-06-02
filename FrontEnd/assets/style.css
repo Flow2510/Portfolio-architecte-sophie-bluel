@@ -381,9 +381,8 @@ footer nav ul {
 }
 
 .add__preview{
-	background-position: center;
-	background-size: cover;
-	width: 50%;
+	display: none;
+	width: 30%;
 	margin: auto;
 	aspect-ratio: 1 / 1.4;
 }
