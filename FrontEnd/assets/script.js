@@ -173,7 +173,7 @@ if(addFormButton){                  // si le nom ou le input file sont vide on b
         }
 
         if (fileInput.files.length > 0 && titleInput.value.trim() !== "" && token) {
-            funcs.addImage();  //   mettre en place l'ajout des photos
+            // funcs.addImage();     si token, fichier, nom OK, on envoie au json
         }
     });
 }
