@@ -2971,5 +2971,75 @@
       "start": "2025-06-02T20:37:14.068Z",
       "end": "2025-06-02T20:39:36.064Z"
     }
+  },
+  {
+    "type": "session",
+    "timestamp": "2025-06-02T20:41:18.869Z",
+    "data": {
+      "id": "1748896878869",
+      "project": "Portfolio-architecte-sophie-bluel",
+      "start": "2025-06-02T20:41:18.869Z",
+      "end": "2025-06-02T20:49:39.409Z"
+    }
+  },
+  {
+    "type": "session",
+    "timestamp": "2025-06-02T20:49:39.409Z",
+    "data": {
+      "id": "1748896878869",
+      "project": "Portfolio-architecte-sophie-bluel",
+      "start": "2025-06-02T20:41:18.869Z",
+      "end": "2025-06-02T20:49:39.409Z"
+    }
+  },
+  {
+    "type": "session",
+    "timestamp": "2025-06-02T21:08:04.365Z",
+    "data": {
+      "id": "1748898484365",
+      "project": "Portfolio-architecte-sophie-bluel",
+      "start": "2025-06-02T21:08:04.365Z",
+      "end": "2025-06-02T21:08:31.485Z"
+    }
+  },
+  {
+    "type": "session",
+    "timestamp": "2025-06-02T21:08:31.485Z",
+    "data": {
+      "id": "1748898484365",
+      "project": "Portfolio-architecte-sophie-bluel",
+      "start": "2025-06-02T21:08:04.365Z",
+      "end": "2025-06-02T21:08:31.485Z"
+    }
+  },
+  {
+    "type": "session",
+    "timestamp": "2025-06-02T21:08:55.782Z",
+    "data": {
+      "id": "1748898535782",
+      "project": "Portfolio-architecte-sophie-bluel",
+      "start": "2025-06-02T21:08:55.782Z",
+      "end": "2025-06-02T21:11:08.145Z"
+    }
+  },
+  {
+    "type": "session",
+    "timestamp": "2025-06-02T21:11:08.145Z",
+    "data": {
+      "id": "1748898535782",
+      "project": "Portfolio-architecte-sophie-bluel",
+      "start": "2025-06-02T21:08:55.782Z",
+      "end": "2025-06-02T21:11:08.145Z"
+    }
+  },
+  {
+    "type": "session",
+    "timestamp": "2025-06-02T21:20:35.810Z",
+    "data": {
+      "id": "1748899235810",
+      "project": "Portfolio-architecte-sophie-bluel",
+      "start": "2025-06-02T21:20:35.810Z",
+      "end": "2025-06-02T21:20:35.810Z"
+    }
   }
 ]

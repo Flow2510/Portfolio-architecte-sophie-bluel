@@ -137,3 +137,34 @@ export function resetModal() {
     document.querySelector('.modal__section').style.display = "block";
     document.querySelector('.add__section').style.display = "none";
 }
+
+const userData = new FormData();            // on fait un nouveau tableau pour stocker l'ajout au json
+const titleInput = document.querySelector('.add__input-title');
+const fileInput = document.querySelector('.add__input-image');
+const select = document.querySelector('.add__select');
+userData.append("image", fileInput.files[0]);   // ajout au tableau des valeurs des inputs
+userData.append("title", titleInput.value);
+userData.append("category", select.value)
+
+export function addImage() {
+    fetch('http://localhost:5678/api/works', {          //  on fait une requete post a l'api
+        method: "POST",
+        headers: {                                        
+            "Accept": "application/json"
+        },
+        body: userData
+    })
+    
+    .then(response => {
+        if (!response.ok) throw new Error(`Erreur lors de l'envoi`);
+        return response.json();
+    })
+    
+    .then(data => {
+        console.log("Réponse de l'API :", data);
+    })
+    
+    .catch(error => {
+        console.error("Erreur :", error);
+    });
+}

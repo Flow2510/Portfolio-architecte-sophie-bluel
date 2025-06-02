@@ -132,7 +132,7 @@ if(addImageButton){
 if(imageInput) {
     imageInput.addEventListener('change', () => {
         const reader = new FileReader();  // filreader est une api native pour lire un fichier upload en local
-        const file = imageInput.files[0];  // pour selectionner l'image (0 car l'index commence a 0)
+        const file = imageInput.files[0];  // pour selectionner l'image (0 car l'index commence a 0) et pouvoir l'utiliser
         const preview = document.querySelector('.add__preview');
         
         reader.onload = (e) => {                                                // 4. Quand la lecture est terminée
@@ -172,8 +172,8 @@ if(addFormButton){                  // si le nom ou le input file sont vide on b
             addLabel.style.border = "";
         }
 
-        if (fileInput.files.length > 0 && titleInput.value.trim() !== "") {
-            console.log('ok')  //   mettre en place l'ajout des photos
+        if (fileInput.files.length > 0 && titleInput.value.trim() !== "" && token) {
+            funcs.addImage();  //   mettre en place l'ajout des photos
         }
     });
 }
