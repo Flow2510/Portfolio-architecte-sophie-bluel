@@ -72,6 +72,7 @@ header {
 	display: flex;
 	justify-content: space-between;
 	margin: 50px auto;
+	width: 100%;
 }
 
 section {
@@ -376,6 +377,15 @@ footer nav ul {
 	flex-direction: column;
 	gap: 0.5rem;
 	margin-top: 2rem;
+	padding: 1rem 0;
+}
+
+.add__preview{
+	background-position: center;
+	background-size: cover;
+	width: 50%;
+	margin: auto;
+	aspect-ratio: 1 / 1.4;
 }
 
 .add__label-image i{
@@ -402,6 +412,10 @@ footer nav ul {
 	outline: none;
 }
 
+.add__input-image{
+	display: none;
+}
+
 .add__label-title{
 	text-align: left;
 	margin: 1rem 0 0.5rem 0;
@@ -419,10 +433,19 @@ footer nav ul {
 	color: white;
 }
 
+.add__form p{
+	font-size: 0.8rem;
+}
+
 /* css pour la page login */
+
+.main{
+	width: 400px;
+}
 
 .section{
 	text-align: center;
+	width: 100%;
 }
 
 .section__title{
@@ -432,9 +455,9 @@ footer nav ul {
 .section__form{
 	display: flex;
 	flex-direction: column;
-	max-width: 380px;
 	margin: 3rem auto 2rem auto;
 	position: relative;
+	width: 100%;
 }
 
 .section__label{
@@ -466,6 +489,9 @@ footer nav ul {
 	font-size: 1.2rem;
 	font-family: 'Syne';
 	color: #ffffff;
+	cursor: pointer;
+	width: 60%;
+	margin: auto;
 }
 
 .section__button:active{

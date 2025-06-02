@@ -2,7 +2,7 @@ import * as funcs from './functions.js';
 
 const token = localStorage.getItem("token");
 
-if (token) {
+if (token) {   
     const loginTextIndex = document.querySelector('.header__li-login');
     const loginText = document.querySelector('.header__nav-login');
 
@@ -23,7 +23,7 @@ if (token) {
             location.reload();
         });
     }
-}
+};
 
 const gallery = document.querySelector('.gallery');
 
@@ -36,35 +36,67 @@ if (gallery){
             }
         });
     });
-}
+};
 
-document.querySelector('.portfolio__modify-wrapper').addEventListener('click', () => {
+const modifyButton = document.querySelector('.portfolio__modify-wrapper');
+
+if (modifyButton) {
+    modifyButton.addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "flex";
     funcs.showModalImg();
 })
+};
 
-document.querySelector('.modal__icon-close').addEventListener('click', () => {
+const modalClose = document.querySelector('.modal__icon-close');
+
+if (modalClose) {
+    modalClose.addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "none";
     document.querySelector('.modal__gallery').innerHTML = "";
 })
+};
 
-document.querySelector('.modal__button').addEventListener('click', () => {
+const modalButton = document.querySelector('.modal__button');
+
+if (modalButton){
+    modalButton.addEventListener('click', () => {
     document.querySelector('.add__section').style.display = 'block';
     document.querySelector('.modal__section').style.display = 'none';
     funcs.showOptions();
 })
+};
 
-document.querySelector('.add__icon-return').addEventListener('click', () => {
+const addReturn = document.querySelector('.add__icon-return');
+
+if (addReturn) {
+    addReturn.addEventListener('click', () => {
     document.querySelector('.add__section').style.display = "none";
     document.querySelector('.modal__section').style.display = "block";
     document.querySelector('.modal__gallery').innerHTML = "";
     funcs.showModalImg();
+    document.querySelector('.add__label-image i').style.display = "block";
+    document.querySelector('.add__label-image button').style.display = "block";
+    document.querySelector('.add__label-image p').style.display = "block";
+    document.querySelector('.add__preview').style.display = "none";
+    document.querySelector('.add__label-image').style.padding = "";
+    document.querySelector('.add__form').reset();
 })
+};
 
-document.querySelector('.add__icon-close').addEventListener('click', () => {
+const addClose = document.querySelector('.add__icon-close');
+
+if(addClose) {
+    addClose.addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "none";
     document.querySelector('.modal__gallery').innerHTML = "";
+    document.querySelector('.add__label-image i').style.display = "block";
+    document.querySelector('.add__label-image button').style.display = "block";
+    document.querySelector('.add__label-image p').style.display = "block";
+    document.querySelector('.add__preview').style.display = "none";
+    document.querySelector('.add__label-image').style.padding = "";
+    document.querySelector('.add__form').reset();
 })
+};
 
 const form = document.querySelector('.section__form');
 
@@ -94,4 +126,45 @@ if (form) {
         document.querySelector('.section__error').style.display = "block";
     }
 });
+};
+
+const imageInput = document.querySelector('.add__input-image');
+const addImageButton = document.querySelector('.add__input-button');
+
+if(addImageButton){
+    addImageButton.addEventListener('click', (c) => {
+        c.preventDefault();
+        imageInput.click();
+    })
+}
+
+if(imageInput) {
+    imageInput.addEventListener('change', () => {
+        const reader = new FileReader();
+        const file = imageInput.files[0];
+        const preview = document.querySelector('.add__preview');
+        
+        reader.onload = (e) => {                // 4. Quand la lecture est terminée
+        preview.style.backgroundImage = `url(${e.target.result})`;     // 5. On place la Data URL dans l'image
+        preview.style.display = 'block';
+        preview.style.backgroundSize = 'cover';
+        preview.style.backgroundPosition = 'center';
+
+        document.querySelector('.add__label-image i').style.display = "none";
+        document.querySelector('.add__label-image button').style.display = "none";
+        document.querySelector('.add__label-image p').style.display = "none";
+        document.querySelector('.add__label-image').style.padding = "0";
+    };
+
+        reader.readAsDataURL(file);
+    });
+}
+
+
+const addFormButton = document.querySelector('.add__form-button');
+
+if(addFormButton){
+    addFormButton.addEventListener('click', (c) => {
+        c.preventDefault();
+    });
 }
