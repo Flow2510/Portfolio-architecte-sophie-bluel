@@ -74,12 +74,7 @@ if (addReturn) {
     document.querySelector('.modal__section').style.display = "block";     
     document.querySelector('.modal__gallery').innerHTML = "";
     funcs.showModalImg();
-    document.querySelector('.add__label-image i').style.display = "block";
-    document.querySelector('.add__label-image button').style.display = "block";
-    document.querySelector('.add__label-image p').style.display = "block";
-    document.querySelector('.add__preview').style.display = "none";
-    document.querySelector('.add__label-image').style.padding = "";
-    document.querySelector('.add__form').reset();
+    funcs.resetAddForm();
 })
 };
 
@@ -89,12 +84,8 @@ if(addClose) {                                                                  
     addClose.addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "none";
     document.querySelector('.modal__gallery').innerHTML = "";
-    document.querySelector('.add__label-image i').style.display = "block";
-    document.querySelector('.add__label-image button').style.display = "block";
-    document.querySelector('.add__label-image p').style.display = "block";
-    document.querySelector('.add__preview').style.display = "none";
-    document.querySelector('.add__label-image').style.padding = "";
-    document.querySelector('.add__form').reset();
+    funcs.resetAddForm();
+    funcs.resetModal();
 })
 };
 
