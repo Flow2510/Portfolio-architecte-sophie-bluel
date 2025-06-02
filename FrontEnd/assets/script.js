@@ -69,7 +69,7 @@ if (modalButton){
 const addReturn = document.querySelector('.add__icon-return');
 
 if (addReturn) {
-    addReturn.addEventListener('click', () => {                                                 //  faire une fonctions pour eviter les repetitions
+    addReturn.addEventListener('click', () => {                                                 
     document.querySelector('.add__section').style.display = "none";
     document.querySelector('.modal__section').style.display = "block";     
     document.querySelector('.modal__gallery').innerHTML = "";
@@ -80,7 +80,7 @@ if (addReturn) {
 
 const addClose = document.querySelector('.add__icon-close');
 
-if(addClose) {                                                                                 // utiliser la fonction fu dessus
+if(addClose) {                                                                               
     addClose.addEventListener('click', () => {
     document.querySelector('.modal__wrapper').style.display = "none";
     document.querySelector('.modal__gallery').innerHTML = "";
@@ -153,8 +153,27 @@ if(imageInput) {
 
 const addFormButton = document.querySelector('.add__form-button');
 
-if(addFormButton){
+if(addFormButton){                  // si le nom ou le input file sont vide on bloque l'envoi
     addFormButton.addEventListener('click', (c) => {
         c.preventDefault();
+        const titleInput = document.querySelector('.add__input-title');
+        const addLabel = document.querySelector('.add__label-image');
+        const fileInput = document.querySelector('.add__input-image');
+        
+        if (titleInput.value.trim() === ""){
+            titleInput.style.border = "1px solid red";
+        } else {
+            titleInput.style.border = "";
+        }
+
+        if (fileInput.files.length === 0){
+            addLabel.style.border = "1px solid red";
+        } else {
+            addLabel.style.border = "";
+        }
+
+        if (fileInput.files.length > 0 && titleInput.value.trim() !== "") {
+            console.log('ok')  //   mettre en place l'ajout des photos
+        }
     });
 }

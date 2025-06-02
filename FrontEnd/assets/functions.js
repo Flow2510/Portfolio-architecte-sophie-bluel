@@ -128,6 +128,8 @@ export function resetAddForm() {
     document.querySelector('.add__label-image p').style.display = "block";
     document.querySelector('.add__preview').style.display = "none";
     document.querySelector('.add__label-image').style.padding = "";
+    document.querySelector('.add__input-title').style.border = "";
+    document.querySelector('.add__label-image').style.border = "";
     document.querySelector('.add__form').reset();
 }
 
