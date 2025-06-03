@@ -92,17 +92,23 @@ export async function showModalImg () {
     for (let work of works) {
         const modalGallery = document.querySelector('.modal__gallery');
         const div = document.createElement('div');
+        const i = document.createElement('i');
+        i.classList.add('gallery__icon');
+        i.classList.add('fa-solid');
+        i.classList.add('fa-trash-can');
+        i.dataset.id = work.id;                                                 // on lie l'id ici pour pouvoir utiliser l'id pour la suppression 
         div.classList.add('gallery__wrapper');
-        div.innerHTML = `<i class="gallery__icon fa-solid fa-trash-can"></i>`;
-        div.style.background = `url("${work.imageUrl}")`;  // bien mettre ${} sinon affiche que la premiere image avec work.imageUrl
+        div.style.background = `url("${work.imageUrl}")`;                       // bien mettre ${} sinon affiche que la premiere image avec work.imageUrl
         div.style.backgroundSize = "cover";
         div.style.backgroundPosition = 'center';
+        div.appendChild(i);
         modalGallery.appendChild(div);
-        
-        // galleryIcon = document.querySelector('.gallery__icon');
-        // galleryIcon.addEventListener('click', () => {
-        //         est ce que je peux supprimer sans supprimer definitivement ? a voir avec mentor
-        // })
+
+        i.addEventListener('click', () => {
+            const imageId = i.dataset.id;
+
+            console.log(imageId);   // ici on recupere l'id, a voir comment faire a vec l'api pour supprimer
+        })
     }
 }
 
@@ -138,19 +144,20 @@ export function resetModal() {
     document.querySelector('.add__section').style.display = "none";
 }
 
-const userData = new FormData();            // on fait un nouveau tableau pour stocker l'ajout au json
+const userData = new FormData();                            // on fait un nouveau tableau pour stocker l'ajout au json
 const titleInput = document.querySelector('.add__input-title');
 const fileInput = document.querySelector('.add__input-image');
 const select = document.querySelector('.add__select');
-userData.append("image", fileInput.files[0]);   // ajout au tableau des valeurs des inputs
+userData.append("image", fileInput.files[0]);               // ajout au tableau des valeurs des inputs
 userData.append("title", titleInput.value);
 userData.append("category", select.value)
 
 export function addImage() {
-    fetch('http://localhost:5678/api/works', {          //  on fait une requete post a l'api
+    fetch('http://localhost:5678/api/works', {              //  on fait une requete post a l'api
         method: "POST",
         headers: {                                        
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Authorization": `Bearer ${token}`
         },
         body: userData
     })
