@@ -39,10 +39,12 @@ if (gallery){
 };
 
 const modifyButton = document.querySelector('.portfolio__modify-wrapper');
+const modal = document.querySelector('.modal__wrapper');
+const modalGallery = document.querySelector('.modal__gallery');
 
 if (modifyButton) {
     modifyButton.addEventListener('click', () => {
-    document.querySelector('.modal__wrapper').style.display = "flex";
+    modal.style.display = "flex";
     funcs.showModalImg();
 })
 };
@@ -51,8 +53,8 @@ const modalClose = document.querySelector('.modal__icon-close');
 
 if (modalClose) {
     modalClose.addEventListener('click', () => {
-    document.querySelector('.modal__wrapper').style.display = "none";
-    document.querySelector('.modal__gallery').innerHTML = "";
+    modal.style.display = "none";
+    modalGallery.innerHTML = "";
 })
 };
 
@@ -72,7 +74,7 @@ if (addReturn) {
     addReturn.addEventListener('click', () => {                                                 
     document.querySelector('.add__section').style.display = "none";
     document.querySelector('.modal__section').style.display = "block";     
-    document.querySelector('.modal__gallery').innerHTML = "";
+    modalGallery.innerHTML = "";
     funcs.showModalImg();
     funcs.resetAddForm();
 })
@@ -82,8 +84,8 @@ const addClose = document.querySelector('.add__icon-close');
 
 if(addClose) {                                                                               
     addClose.addEventListener('click', () => {
-    document.querySelector('.modal__wrapper').style.display = "none";
-    document.querySelector('.modal__gallery').innerHTML = "";
+    modal.style.display = "none";
+    modalGallery.innerHTML = "";
     funcs.resetAddForm();
     funcs.resetModal();
 })
@@ -173,7 +175,7 @@ if(addFormButton){                  // si le nom ou le input file sont vide on b
         }
 
         if (fileInput.files.length > 0 && titleInput.value.trim() !== "" && token) {
-            funcs.addImage();     //     si token, fichier, nom OK, on envoie au json
+            funcs.addImage();     //     si token, fichier, nom OK, alors on envoie au json, A TESTER
         }
     });
 }

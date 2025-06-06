@@ -105,9 +105,12 @@ export async function showModalImg () {
         modalGallery.appendChild(div);
 
         i.addEventListener('click', () => {
-            const imageId = i.dataset.id;
+            const imageId = i.dataset.id;           // ici on recupere l'id, a voir comment faire avec l'api pour supprimer
+            
+            // fetch(`http://localhost:5678/api/works/${imageId}`,
+                 
 
-            console.log(imageId);   // ici on recupere l'id, a voir comment faire a vec l'api pour supprimer
+            // )
         })
     }
 }

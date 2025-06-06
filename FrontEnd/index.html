@@ -37,17 +37,17 @@
 		</div>
 		<div class="add__gallery-wrapper">
 			<h3 class="add__title">Ajout photo</h3>
-			<form action="" class="add__form">
-				<label class="add__label-image">
+			<form class="add__form">
+				<label class="add__label-image" for="add__input-image">      <!--   ne passe pas au validateur   -->
 					<div class="add__preview"></div>
 					<i class="fa-regular fa-image"></i>
 					<button class="add__input-button">+ Ajouter photo</button>
 					<p>jpg, png: 4mo max</p>
-					<input type="file" src="" alt="" class="add__input-image">
 				</label>
+				<input type="file" class="add__input-image" id="add__input-image">
 				<label class="add__label-title" for="add__input-title">Titre</label>
 				<input class="add__input-title" type="text" name="add__input-title" id="add__input-title">
-				<label class="add__label-title" for="">Catégorie</label>
+				<label class="add__label-title" for="add__select">Catégorie</label>
 				<select class="add__select" name="add__select" id="add__select">
 					<!-- mettres les options avec JS -->
 				</select>
@@ -61,9 +61,9 @@
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
-			<a href="#portfolio"><li>projets</li></a>
-			<a href="#contact"><li>contact</li></a>
-			<a href="login.html"><li class="header__li-login">login</li></a>
+			<li><a href="#portfolio">projets</a></li>
+			<li><a href="#contact">contact</a></li>
+			<li class="header__li-login"><a href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
