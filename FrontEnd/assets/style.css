@@ -436,6 +436,10 @@ footer nav ul {
 	font-size: 0.8rem;
 }
 
+.header__li-login{
+	cursor: pointer;
+}
+
 /* css pour la page login */
 
 .main{

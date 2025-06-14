@@ -107,10 +107,16 @@ export async function showModalImg () {
         i.addEventListener('click', () => {
             const imageId = i.dataset.id;           // ici on recupere l'id, a voir comment faire avec l'api pour supprimer
             
-            // fetch(`http://localhost:5678/api/works/${imageId}`,
-                 
-
-            // )
+            // fetch(`http://localhost:5678/api/works/${imageId}`, {
+            //  method:'DELETE', 
+            //  headers: {
+            //      'Accept': '*/*',
+            //      'Authorization': `Bearer ${token}`
+            //  }
+            // })
+            // .then(response => {
+            //     i.remove();
+            // })
         })
     }
 }
@@ -159,13 +165,13 @@ export function addImage() {
     fetch('http://localhost:5678/api/works', {              //  on fait une requete post a l'api
         method: "POST",
         headers: {                                        
-            "Accept": "application/json",
-            "Authorization": `Bearer ${token}`
+            "Accept": "application/json",                   //  on souhaite recevoir une reponse au format Json
+            "Authorization": `Bearer ${token}`              //  on demande le token pour l'authorisation de poster
         },
         body: userData
     })
     
-    .then(response => {
+    .then(response => {                         //  Mieux commprendre comment bien gérer les erreurs
         if (!response.ok) throw new Error(`Erreur lors de l'envoi`);
         return response.json();
     })
